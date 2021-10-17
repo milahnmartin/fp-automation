@@ -8,4 +8,4 @@ packer_cache/
 .env
 
 # ignore db file
-.db
+*.db
