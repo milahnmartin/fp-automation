@@ -30,10 +30,10 @@ def tweet(message: str, game: str):
 
 def monitor_valorant():
     last_ping_status = False
-    p = games.Valorant()
-    result = p.ping_server()
-    print(result)
-    time.sleep(2)
+    v_instance = games.Valorant()
+    result = v_instance.ping_server()
+    print("[GETTING VALORANT PING INFO]")
+    time.sleep(1)
     if(result['avg_latency'] < 160 and last_ping_status == False):
         print("Servers are fixed")
         tweet('Bahrain Servers are now working correctly', 'valorant')
@@ -52,8 +52,8 @@ def monitor_fortnite():
     last_ping_status = False
     f_instance = games.Fortnite()
     result = f_instance.ping_server()
-    print(result)
-    time.sleep(2)
+    print("[GETTING FORTNITE PING INFO]")
+    time.sleep(1)
     if(result['avg_latency'] < 160 and last_ping_status == False):
         print("Servers are fixed")
         tweet('Dubai Servers are now working correctly', 'valorant')
