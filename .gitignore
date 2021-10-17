@@ -6,3 +6,6 @@ packer_cache/
 
 # ignore .env
 .env
+
+# ignore db file
+.db
