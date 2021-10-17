@@ -1,2 +1,2 @@
-from fortnite import *
-from valorant import *
+from games.valorant import Valorant
+from games.fortnite import Fortnite
