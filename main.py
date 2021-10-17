@@ -28,21 +28,45 @@ def tweet(message: str, game: str):
     print(f'{game} TWEET SENT')
 
 
-# while True:
-#     p = games.Valorant()
-#     result = p.ping_server()
-#     print(result)
-#     time.sleep(2)
-#     if(result['avg_latency'] < 160 and last_ping_status == False):
-#         print("Servers are fixed")
-#         tweet('Bahrain Servers are now working correctly', 'valorant')
-#         last_ping_status = True
-#     elif(result['avg_latency'] > 160 and last_ping_status == True):
-#         print("Servers are fucked")
-#         tweet('Bahrain Servers are broken', 'valorant')
-#         last_ping_status = False
-#     elif(result['avg_latency'] > 160 and last_ping_status == False):
-#         print("Servers still broken sorry")
-#     elif(result['avg_latency'] < 160 and last_ping_status == True):
-#         print("Servers still looking good")
-tweet('Bahrain Servers are now working correctly', 'valorant')
+def monitor_valorant():
+    last_ping_status = False
+    p = games.Valorant()
+    result = p.ping_server()
+    print(result)
+    time.sleep(2)
+    if(result['avg_latency'] < 160 and last_ping_status == False):
+        print("Servers are fixed")
+        tweet('Bahrain Servers are now working correctly', 'valorant')
+        last_ping_status = True
+    elif(result['avg_latency'] > 160 and last_ping_status == True):
+        print("Servers are fucked")
+        tweet('Bahrain Servers are broken', 'valorant')
+        last_ping_status = False
+    elif(result['avg_latency'] > 160 and last_ping_status == False):
+        print("Servers still broken sorry")
+    elif(result['avg_latency'] < 160 and last_ping_status == True):
+        print("Servers still looking good")
+
+
+def monitor_fortnite():
+    last_ping_status = False
+    f_instance = games.Fortnite()
+    result = f_instance.ping_server()
+    print(result)
+    time.sleep(2)
+    if(result['avg_latency'] < 160 and last_ping_status == False):
+        print("Servers are fixed")
+        tweet('Dubai Servers are now working correctly', 'valorant')
+        last_ping_status = True
+    elif(result['avg_latency'] > 160 and last_ping_status == True):
+        print("Servers are fucked")
+        tweet('Dubai Servers are broken', 'valorant')
+        last_ping_status = False
+    elif(result['avg_latency'] > 160 and last_ping_status == False):
+        print("Servers still broken sorry")
+    elif(result['avg_latency'] < 160 and last_ping_status == True):
+        print("Servers still looking good")
+
+
+while True:
+    monitor_valorant()
