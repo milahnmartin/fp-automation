@@ -7,6 +7,12 @@ class Db:
         self.conn = sqlite3.connect('logs.db')
         self.cur = self.conn.cursor()
 
+    def clear_table(self) -> None:
+        now = datetime.now()
+        query_sql = "DROP TABLE `fp_logs`"
+        self.conn.execute(query_sql)
+        print(f'[TABLE FP_LOGS WAS DROPPED AT {now}]')
+
     def create_table(self) -> None:
         self.cur.execute(
             "CREATE TABLE IF NOT EXISTS fp_logs (id integer PRIMARY KEY AUTOINCREMENT,date TEXT,game TEXT,query TEXT,last_response INETEGER DEFAULT 0);")
