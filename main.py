@@ -18,10 +18,10 @@ def auth():
     return auth
 
 
-def tweet(message:str,game:str):
+def tweet(message: str, game: str):
     auth_status = auth()
     api = tweepy.API(auth_status)
-    api.update_status(status=f'#{game}, {message} @ultrafyy')
+    api.update_status(status=f'#{game}, {message.upper()} @Ultrafyy')
     print("TWEET SUCCESS")
 
 
@@ -32,13 +32,15 @@ while True:
     time.sleep(2)
     if(result['avg_latency'] < 160 and last_ping_status == False):
         print("Servers are fixed")
-        tweet('valorant','Bahrain Servers are now working correctly')
+        tweet('Bahrain Servers are now working correctly','valorant',)
         last_ping_status = True
     elif(result['avg_latency'] > 160 and last_ping_status == True):
         print("Servers are fucked")
-        tweet('valorant','Bahrain Servers are broken')
+        tweet('Bahrain Servers are broken','valorant',)
         last_ping_status = False
     elif(result['avg_latency'] > 160 and last_ping_status == False):
         print("Servers still broken sorry")
     elif(result['avg_latency'] < 160 and last_ping_status == True):
         print("Servers still looking good")
+
+

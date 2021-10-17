@@ -20,18 +20,4 @@ class Valorant:
         }
 
 
-while True:
-    p = Valorant()
-    result = p.ping_server()
-    print(result)
-    time.sleep(2)
-    if(result['avg_latency'] < 160 and last_ping_status == False):
-        print("Servers are fixed")
-        last_ping_status = True
-    elif(result['avg_latency'] > 160 and last_ping_status == True):
-        print("Servers are fucked")
-        last_ping_status = False
-    elif(result['avg_latency'] > 160 and last_ping_status == False):
-        print("Servers still broken sorry")
-    elif(result['avg_latency'] < 160 and last_ping_status == True):
-        print("Servers still looking good")
+
