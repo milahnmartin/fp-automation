@@ -9,19 +9,20 @@ load_dotenv(find_dotenv())
 
 
 def auth():
-    callback_uri = 'oob'
     auth = tweepy.OAuthHandler(
-        os.getenv('API_KEY'), os.getenv('API_SECRET_KEY'), callback_uri)
+        os.getenv("CONSUMER_KEY"), os.getenv("CONSUMER_KEY_SECRET"))
+    auth.set_access_token(os.getenv("ACCESS_TOKEN"),
+                          os.getenv("ACCESS_TOKEN_SECRET"))
 
-    if(auth):
-        print(True)
-    else:
-        print(False)
+    return auth
 
 
-def main():
-    print(os.getenv('CONSUMER_KEY'))
+def tweet():
+    auth_status = auth()
+    api = tweepy.API(auth_status)
+    api.update_status(status="Fingerprint Automation Test")
+    print("TWEET SUCCESS")
 
 
 if __name__ == "__main__":
-    auth()
+    tweet()
