@@ -10,11 +10,24 @@ import logs
 load_dotenv(find_dotenv())
 
 # GLOBAL VARIABLES
-valorant_last_status = False
+valorant_last_status = True
 fortnite_last_status = False
 
 
 def tweet(message: str, game: str):
+    global valorant_last_status
+    global fortnite_last_status
+    if(game == 'valorant'):
+        if(valorant_last_status):
+            game_last_state = 1
+        else:
+            game_last_state = 0
+    elif(game == 'fortnite'):
+        if(fortnite_last_status):
+            game_last_state = 1
+        else:
+            game_last_state = 0
+
     auth = tweepy.OAuthHandler(
         os.getenv("CONSUMER_KEY"), os.getenv("CONSUMER_KEY_SECRET"))
     auth.set_access_token(os.getenv("ACCESS_TOKEN"),
@@ -23,6 +36,8 @@ def tweet(message: str, game: str):
     api = tweepy.API(auth)
     api.update_status(status=f'#{game} -> {message.upper()} @Ultrafyy')
     d = logs.Discord()
+    db_instance = logs.Db()
+    db_instance.query(game, message, game_last_state)
     print(f'[{game.upper()} -> TWEET SENT]')
 
 
