@@ -35,17 +35,17 @@ def monitor_valorant():
     print("[GETTING VALORANT PING INFO]")
     time.sleep(1)
     if(result['avg_latency'] < 160 and last_ping_status == False):
-        print("Servers are fixed")
+        print("[VALORANT BAHRAIN - FIXED]")
         tweet('Bahrain Servers are now working correctly', 'valorant')
         last_ping_status = True
     elif(result['avg_latency'] > 160 and last_ping_status == True):
-        print("Servers are fucked")
+        print("[VALORANT BAHRAIN - BROKEN]")
         tweet('Bahrain Servers are broken', 'valorant')
         last_ping_status = False
     elif(result['avg_latency'] > 160 and last_ping_status == False):
-        print("Servers still broken sorry")
+        print("[VALORANT BAHRAIN - STILL BROKEN]")
     elif(result['avg_latency'] < 160 and last_ping_status == True):
-        print("Servers still looking good")
+        print("[VALORANT BAHRAIN - STILL WORKING NORMALLY]")
 
 
 def monitor_fortnite():
