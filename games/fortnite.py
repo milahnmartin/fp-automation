@@ -5,7 +5,7 @@ from pythonping import ping
 
 class Fortnite:
     def __init__(self) -> None:
-        self.url = '157.175.10.11'
+        self.url = 'dynamodb.me-south-1.amazonaws.com'
 
     def ping_server(self):
         ping_result = ping(target=self.url, count=10, timeout=2)

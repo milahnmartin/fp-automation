@@ -10,7 +10,7 @@ import logs
 load_dotenv(find_dotenv())
 
 # GLOBAL VARIABLES
-valorant_last_status = False
+valorant_last_status = True
 fortnite_last_status = True
 
 
