@@ -10,11 +10,11 @@ import logs
 load_dotenv(find_dotenv())
 
 # GLOBAL VARIABLES
-valorant_last_status = False
+valorant_last_status = True
 fortnite_last_status = False
 
 
-def tweet(message: str, game: str):
+def tweet(message: str, game: str, status: bool):
     global valorant_last_status
     global fortnite_last_status
     if(game == 'valorant'):
@@ -34,9 +34,16 @@ def tweet(message: str, game: str):
                           os.getenv("ACCESS_TOKEN_SECRET"))
     print("[TWEEPY AUTH -> SUCCESS]")
     api = tweepy.API(auth)
-    api.update_status(status=f'''#{game.upper()} 
+    if(not status):
+        api.update_status(status=f'''#{game.upper()} 
     
-    !! {message.upper()} !! 
+    ❌❌ {message.upper()} ❌❌
+
+    @Ultrafyy''')
+    else:
+        api.update_status(status=f'''#{game.upper()} 
+    
+    ✅✅ {message.upper()} ✅✅
 
     @Ultrafyy''')
     d = logs.Discord()
@@ -53,11 +60,11 @@ def monitor_valorant():
     time.sleep(5)
     if(result['avg_latency'] < 160 and valorant_last_status == False):
         print("[VALORANT BAHRAIN - FIXED]")
-        tweet('Bahrain Servers are now working correctly', 'valorant')
+        tweet('Bahrain Servers are now working correctly', 'valorant', True)
         valorant_last_status = True
     elif(result['avg_latency'] > 160 and valorant_last_status == True):
         print("[VALORANT BAHRAIN - BROKEN]")
-        tweet('Bahrain Servers are broken', 'valorant')
+        tweet('Bahrain Servers are broken', 'valorant', False)
         valorant_last_status = False
     elif(result['avg_latency'] > 160 and valorant_last_status == False):
         print("[VALORANT BAHRAIN - STILL BROKEN]")
@@ -73,11 +80,11 @@ def monitor_fortnite():
     time.sleep(5)
     if(result['avg_latency'] < 160 and fortnite_last_status == False):
         print("Servers are fixed")
-        tweet('Dubai Servers are now working correctly', 'valorant')
+        tweet('Dubai Servers are now working correctly', 'valorant', True)
         fortnite_last_status = True
     elif(result['avg_latency'] > 160 and fortnite_last_status == True):
         print("Servers are fucked")
-        tweet('Dubai Servers are broken', 'valorant')
+        tweet('Dubai Servers are broken', 'valorant', False)
         fortnite_last_status = False
     elif(result['avg_latency'] > 160 and fortnite_last_status == False):
         print("Servers still broken sorry")
