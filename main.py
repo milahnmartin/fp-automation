@@ -11,7 +11,7 @@ load_dotenv(find_dotenv())
 
 # GLOBAL VARIABLES
 valorant_last_status = True
-fortnite_last_status = False
+fortnite_last_status = True
 
 
 def tweet(message: str, game: str, status: bool):
@@ -79,19 +79,20 @@ def monitor_fortnite():
     print("[GETTING FORTNITE PING INFO]")
     time.sleep(5)
     if(result['avg_latency'] < 160 and fortnite_last_status == False):
-        print("Servers are fixed")
-        tweet('Dubai Servers are now working correctly', 'valorant', True)
+        print("[FORTNITE BAHRAIN - FIXED]")
+        tweet('Bahrain Servers are now working correctly', 'fortnite', True)
         fortnite_last_status = True
     elif(result['avg_latency'] > 160 and fortnite_last_status == True):
-        print("Servers are fucked")
-        tweet('Dubai Servers are broken', 'valorant', False)
+        print("[VALORANT BAHRAIN - BROKEN]")
+        tweet('Bahrain Servers are broken', 'fortnite', False)
         fortnite_last_status = False
     elif(result['avg_latency'] > 160 and fortnite_last_status == False):
-        print("Servers still broken sorry")
+        print("[FORTNITE BAHRAIN - STILL BROKEN]")
     elif(result['avg_latency'] < 160 and fortnite_last_status == True):
-        print("Servers still looking good")
+        print("[FORTNITE BAHRAIN - STILL WORKING NORMALLY]")
 
 
 if __name__ == '__main__':
     while True:
         monitor_valorant()
+        monitor_fortnite()
