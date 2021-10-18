@@ -65,17 +65,18 @@ def monitor_valorant():
     print("[GETTING VALORANT PING INFO]")
     time.sleep(5)
     if(result['avg_latency'] < 160 and valorant_last_status == False):
-        print("[VALORANT BAHRAIN - FIXED]")
+        print("[VALORANT BAHRAIN - FIXED] ->", result['avg_latency'])
         tweet('Bahrain Servers are now working correctly', 'valorant', True)
         valorant_last_status = True
     elif(result['avg_latency'] > 160 and valorant_last_status == True):
-        print("[VALORANT BAHRAIN - BROKEN]")
+        print("[VALORANT BAHRAIN - BROKEN] ->", result['avg_latency'])
         tweet('Bahrain Servers are broken', 'valorant', False)
         valorant_last_status = False
     elif(result['avg_latency'] > 160 and valorant_last_status == False):
-        print("[VALORANT BAHRAIN - STILL BROKEN]")
+        print("[VALORANT BAHRAIN - STILL BROKEN] ->", result['avg_latency'])
     elif(result['avg_latency'] < 160 and valorant_last_status == True):
-        print("[VALORANT BAHRAIN - STILL WORKING NORMALLY]")
+        print("[VALORANT BAHRAIN - STILL WORKING NORMALLY] ->",
+              result['avg_latency'])
 
 
 def monitor_fortnite():
@@ -85,17 +86,18 @@ def monitor_fortnite():
     print("[GETTING FORTNITE PING INFO]")
     time.sleep(5)
     if(result['avg_latency'] < 160 and fortnite_last_status == False):
-        print("[FORTNITE BAHRAIN - FIXED]")
+        print("[FORTNITE BAHRAIN - FIXED] ->", result['avg_latency'])
         tweet('Bahrain Servers are now working correctly', 'fortnite', True)
         fortnite_last_status = True
     elif(result['avg_latency'] > 160 and fortnite_last_status == True):
-        print("[VALORANT BAHRAIN - BROKEN]")
+        print("[VALORANT BAHRAIN - BROKEN] ->", result['avg_latency'])
         tweet('Bahrain Servers are broken', 'fortnite', False)
         fortnite_last_status = False
     elif(result['avg_latency'] > 160 and fortnite_last_status == False):
-        print("[FORTNITE BAHRAIN - STILL BROKEN]")
+        print("[FORTNITE BAHRAIN - STILL BROKEN] ->", result['avg_latency'])
     elif(result['avg_latency'] < 160 and fortnite_last_status == True):
-        print("[FORTNITE BAHRAIN - STILL WORKING NORMALLY]")
+        print("[FORTNITE BAHRAIN - STILL WORKING NORMALLY] ->",
+              result['avg_latency'])
 
 
 if __name__ == '__main__':
