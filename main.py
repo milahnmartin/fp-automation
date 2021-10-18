@@ -10,7 +10,7 @@ import logs
 load_dotenv(find_dotenv())
 
 # GLOBAL VARIABLES
-valorant_last_status = False
+valorant_last_status = True
 fortnite_last_status = False
 
 
@@ -34,7 +34,11 @@ def tweet(message: str, game: str):
                           os.getenv("ACCESS_TOKEN_SECRET"))
     print("[TWEEPY AUTH -> SUCCESS]")
     api = tweepy.API(auth)
-    api.update_status(status=f'#{game} -> {message.upper()} @Ultrafyy')
+    api.update_status(status=f'''#{game.upper()} 
+    
+    !! {message.upper()} !! 
+
+    @Ultrafyy''')
     d = logs.Discord()
     db_instance = logs.Db()
     db_instance.query(game, message, game_last_state)
