@@ -10,7 +10,7 @@ import logs
 load_dotenv(find_dotenv())
 
 # GLOBAL VARIABLES
-valorant_last_status = True
+valorant_last_status = False
 fortnite_last_status = False
 
 
@@ -85,5 +85,6 @@ def monitor_fortnite():
         print("Servers still looking good")
 
 
-while True:
-    monitor_valorant()
+if __name__ == '__main__':
+    while True:
+        monitor_valorant()
