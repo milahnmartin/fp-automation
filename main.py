@@ -10,7 +10,7 @@ import logs
 load_dotenv(find_dotenv())
 
 # GLOBAL VARIABLES
-valorant_last_status = True
+valorant_last_status = False
 fortnite_last_status = True
 
 
@@ -35,18 +35,24 @@ def tweet(message: str, game: str, status: bool):
     print("[TWEEPY AUTH -> SUCCESS]")
     api = tweepy.API(auth)
     if(not status):
+        discord_i = logs.Discord()
+        discord_i.post_webhook(
+            f'[TWEET WAS SENT -> ❌❌ UHM, SOMETHING IS WRONG WITH THE SERVERS ATM !! ❌❌]')
         api.update_status(status=f'''#{game.upper()} 
     
-    ❌❌ {message.upper()} ❌❌
+    ❌❌ UHM, SOMETHING IS WRONG WITH THE SERVERS ATM !! ❌❌
 
-    @Ultrafyy''')
+        ''')
     else:
+        discord_i = logs.Discord()
+        discord_i.post_webhook(
+            f'[TWEET WAS SENT -> ✅✅ HEY YOU READING THIS ! THE SERVERS ARE UP AND WORKING !! ✅✅]')
         api.update_status(status=f'''#{game.upper()} 
     
-    ✅✅ {message.upper()} ✅✅
+    ✅✅ GOODNEWS ! SERVERS ARE PERFORMING NORMALLY !! ✅✅
 
-    @Ultrafyy''')
-    d = logs.Discord()
+        ''')
+
     db_instance = logs.Db()
     db_instance.query(game, message, game_last_state)
     print(f'[{game.upper()} -> TWEET SENT]')

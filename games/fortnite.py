@@ -1,7 +1,6 @@
 import time
 import os
 from pythonping import ping
-last_ping_status = False
 
 
 class Fortnite:

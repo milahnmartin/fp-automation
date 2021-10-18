@@ -10,4 +10,4 @@ class Discord:
         webhook_post = DiscordWebhook(
             url=self.webhook_url, rate_limit_retry=True, content=message)
         response = webhook_post.execute()
-        print(f'Discord Message {message} has been sent')
+        print(f'[FP-DISCORD -> MESSAGE SENT]')
