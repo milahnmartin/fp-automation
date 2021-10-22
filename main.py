@@ -11,10 +11,10 @@ load_dotenv(find_dotenv())
 
 # GLOBAL VARIABLES
 valorant_last_status = True
-fortnite_last_status = True
+fortnite_last_status = False
 
 
-def tweet(message: str, game: str, status: bool):
+def tweet(message: str, game: str, last_status: bool):
     global valorant_last_status
     global fortnite_last_status
     if(game == 'valorant'):
@@ -34,28 +34,33 @@ def tweet(message: str, game: str, status: bool):
                           os.getenv("ACCESS_TOKEN_SECRET"))
     print("[TWEEPY AUTH -> SUCCESS]")
     api = tweepy.API(auth)
-    if(not status):
-        discord_i = logs.Discord()
-        discord_i.post_webhook(
-            f'[TWEET WAS SENT -> ❌❌ UHM, SOMETHING IS WRONG WITH THE SERVERS ATM !! ❌❌]')
-        api.update_status(status=f'''#{game.upper()} 
+    if(not last_status):
+        api.update_status_with_media(
+            'https://play-lh.googleusercontent.com/x3XxTcEYG6hYRZwnWAUfMavRfNNBl8OZweUgZDf2jUJ3qjg2p91Y8MudeXumaQLily0', f'''#{game.upper()} 
     
     ❌❌ UHM, SOMETHING IS WRONG WITH THE SERVERS ATM !! ❌❌
 
+
         ''')
+        discord_i = logs.Discord()
+        discord_i.post_webhook(
+            f'[TWEET WAS SENT -> ❌❌ UHM, SOMETHING IS WRONG WITH THE SERVERS ATM !! ❌❌]')
+        # api.update_status(status=)
     else:
+        api.update_status_with_media('https://play-lh.googleusercontent.com/x3XxTcEYG6hYRZwnWAUfMavRfNNBl8OZweUgZDf2jUJ3qjg2p91Y8MudeXumaQLily0',
+                                     '✅✅ GOODNEWS ! SERVERS ARE PERFORMING NORMALLY !! ✅✅')
         discord_i = logs.Discord()
         discord_i.post_webhook(
             f'[TWEET WAS SENT -> ✅✅ HEY YOU READING THIS ! THE SERVERS ARE UP AND WORKING !! ✅✅]')
-        api.update_status(status=f'''#{game.upper()} 
-    
-    ✅✅ GOODNEWS ! SERVERS ARE PERFORMING NORMALLY !! ✅✅
+    #     api.update_status(status=f'''#{game.upper()}
 
-        ''')
+    # ✅✅ GOODNEWS ! SERVERS ARE PERFORMING NORMALLY !! ✅✅
 
-    db_instance = logs.Db()
-    db_instance.query(game, message, game_last_state)
-    print(f'[{game.upper()} -> TWEET SENT]')
+    #     ''')
+
+        db_instance = logs.Db()
+        db_instance.query(game, message, game_last_state)
+        print(f'[{game.upper()} -> TWEET SENT]')
 
 
 def monitor_valorant():
