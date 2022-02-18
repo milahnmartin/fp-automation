@@ -5,9 +5,12 @@ packer_cache/
 *.box
 
 # ignore .env
-.env
+# .env
 
 # ignore db file
 *.db
 
 /venv
+
+**/__pycache__
+__pycache__

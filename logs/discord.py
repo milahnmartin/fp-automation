@@ -3,11 +3,10 @@ import os
 
 
 class Discord:
-    def __init__(self) -> None:
-        self.webhook_url = os.getenv('DISCORD_WEBHOOK')
+    webhook_url = os.getenv('DISCORD_WEBHOOK')
 
-    def post_webhook(self, message):
+    def post_webhook(message):
         webhook_post = DiscordWebhook(
-            url=self.webhook_url, rate_limit_retry=True, content=message)
+            url=__class__.webhook_url, rate_limit_retry=True, content=message)
         response = webhook_post.execute()
         print(f'[FP-DISCORD -> MESSAGE SENT]')

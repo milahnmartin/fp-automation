@@ -1,17 +1,14 @@
-import time
-import os
 from pythonping import ping
 
 
-class Fortnite:
-    def __init__(self) -> None:
-        self.url = 'dynamodb.me-south-1.amazonaws.com'
+class Bahrain:
+    Bahrain_url = 'dynamodb.me-south-1.amazonaws.com'
 
-    def ping_server(self):
-        ping_result = ping(target=self.url, count=10, timeout=2)
+    def ping_server():
+        ping_result = ping(target=__class__.Bahrain_url, count=10, timeout=2)
 
         return {
-            'host': self.url,
+            'host': __class__.Bahrain_url,
             'avg_latency': ping_result.rtt_avg_ms,
             'min_latency': ping_result.rtt_min_ms,
             'max_latency': ping_result.rtt_max_ms,

@@ -1,17 +1,14 @@
-import time
-import os
 from pythonping import ping
 
 
-class Valorant:
-    def __init__(self) -> None:
-        self.url = '157.175.10.11'
+class Bahrain2:
+    bahrain_url = '157.175.10.11'
 
-    def ping_server(self):
-        ping_result = ping(target=self.url, count=10, timeout=2)
+    def ping_server() -> dict:
+        ping_result = ping(target=__class__.url, count=10, timeout=2)
 
         return {
-            'host': self.url,
+            'host': __class__.url,
             'avg_latency': ping_result.rtt_avg_ms,
             'min_latency': ping_result.rtt_min_ms,
             'max_latency': ping_result.rtt_max_ms,
