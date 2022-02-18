@@ -9,3 +9,5 @@ packer_cache/
 
 # ignore db file
 *.db
+
+/venv
