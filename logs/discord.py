@@ -1,9 +1,10 @@
 from discord_webhook import DiscordWebhook
 import os
+from constants import env_var
 
 
 class Discord:
-    webhook_url = os.getenv('DISCORD_WEBHOOK')
+    webhook_url = env_var['DISCORD_WEBHOOK']
 
     def post_webhook(message):
         webhook_post = DiscordWebhook(
