@@ -1,0 +1,8 @@
+env_var = {
+    "API_KEY":"zT7KbKliTEgqjvZ1pAZK6rAH4",
+    "API_KEY_SECRET":"48tDR9Hjn4rHTXn3tty40B16PVNapCcojXihRRT8yzWdXnU3Dx",
+    "ACCESS_TOKEN":"1347959371024760833-hfuS1xodSHQIWSFmyK8Dr2ZWsNClE5",
+    "ACCESS_TOKEM_SECRET":"vav2yzhJPk9eHGjL2fYAqgioNDa145pqplpbNeiJf7BT8",
+    "DISCORD_WEBHOOK":"https://discord.com/api/webhooks/870073204188803072/3WK4zKkHCIyJK552rDyog7_qpCpYkKFeqNgv-EYv-DvKZd5kb6FRHjSRT4Y8nVe2jw3-"
+
+}
