@@ -1,13 +1,18 @@
+from locale import currency
+from re import T
+import dotenv
 import requests
 import tweepy
+from dotenv import load_dotenv, find_dotenv
 import os
 import time
 from logs.discord import Discord
+import servers
 import logs
 from servers import bahrain
 from servers.bahrain import Bahrain
-from constants import env_var
 
+load_dotenv(find_dotenv())
 
 
 class Monitor_Bahrain:
@@ -17,8 +22,8 @@ class Monitor_Bahrain:
 
     bahrain_last = True
 
-    auth = tweepy.OAuth1UserHandler(env_var['API_KEY'],env_var['API_KEY_SECRET'])
-    auth.set_access_token(env_var['ACCESS_TOKEN'],env_var['ACCESS_TOKEM_SECRET'])
+    auth = tweepy.OAuth1UserHandler(os.getenv('API_KEY'),os.getenv('API_KEY_SECRET'))
+    auth.set_access_token(os.getenv('ACCESS_TOKEN'),os.getenv('ACCESS_TOKEM_SECRET'))
     api = tweepy.API(auth)
     
     def send_tweet(pQuery:str) -> bool:
