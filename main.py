@@ -1,5 +1,3 @@
-from locale import currency
-from re import T
 import dotenv
 import requests
 import tweepy
@@ -7,19 +5,14 @@ from dotenv import load_dotenv, find_dotenv
 import os
 import time
 from logs.discord import Discord
-import servers
-import logs
 from servers import bahrain
 from servers.bahrain import Bahrain
 
 load_dotenv(find_dotenv())
-
-
 class Monitor_Bahrain:
     # True meaning last ping under 170 ping, a.k.a working
     # False meaning last ping above 200 ping, a.k.a not working
     # differnet for london based server ( digitial ocean )
-
     bahrain_last = True
 
     auth = tweepy.OAuth1UserHandler(os.getenv('API_KEY'),os.getenv('API_KEY_SECRET'))
