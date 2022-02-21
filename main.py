@@ -28,7 +28,7 @@ class Monitor_Bahrain:
         current_bahrain = Bahrain.ping_server()
         print(f'COCKKKKKKKKKK')
         if __class__.bahrain_last:
-            if current_bahrain['min_latency'] > 200:
+            if current_bahrain['min_latency'] > 170:
                 __class__.send_tweet('''
                 SERVER IS BROKE - bahrain
                                     ''')
@@ -39,7 +39,7 @@ class Monitor_Bahrain:
 
         elif not __class__.bahrain_last:
 
-            if current_bahrain['min_latency'] < 200:
+            if current_bahrain['min_latency'] < 170:
                 __class__.send_tweet('''
                 SERVER IS FIXED AND WORKING - bahrain
                                     ''')
