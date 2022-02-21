@@ -18,7 +18,7 @@ class Monitor_Bahrain:
     api = tweepy.API(auth)
     
     def send_tweet(pQuery:str) -> bool:
-        # __class__.api.update_status(pQuery)
+        __class__.api.update_status(pQuery)
         # Discord.post_webhook(pQuery)
         print('[TWEET WAS SENT]')
 
