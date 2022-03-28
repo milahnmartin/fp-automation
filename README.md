@@ -10,5 +10,5 @@
         <li>On change detection automatically sends out messages on social media to inform users that there was a change in latency</li>
         <li>This is done to inform South African Games that their gaming time might be impacted</li>
       </ul>
-      </section
+    </section>
   </div>
