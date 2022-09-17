@@ -24,9 +24,7 @@ class Monitor_Bahrain:
 
 
     def get_bahrain_status() -> bool:
-        print(f'COCK - {__class__.bahrain_last}')
         current_bahrain = Bahrain.ping_server()
-        print(f'COCKKKKKKKKKK')
         if __class__.bahrain_last:
             if current_bahrain['min_latency'] > 170:
                 __class__.send_tweet('''
